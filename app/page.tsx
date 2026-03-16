@@ -29,7 +29,7 @@ export default function Home() {
             </nav>
           </div>
           <nav className={styles.nav}>
-            <Link href="/services" className={styles.navLink}>Services</Link>
+            <Link href="/careers" className={styles.navLink}>Careers</Link>
             <Link href="/products" className={styles.navLink}>Products</Link>
             <Link href="/news" className={styles.navLink}>News</Link>
             <Link href="/about" className={styles.navLink}>About</Link>
