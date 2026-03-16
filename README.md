@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Travlor - Corporate Excellence Platform
+
+A modern Next.js landing page for a corporate consulting and technology solutions company.
+
+## Features
+
+- **Responsive Design**: Fully responsive layout matching the provided design specifications
+- **Modern UI**: Clean, professional interface with Tailwind CSS
+- **API Routes**: Backend endpoints for contact forms, newsletter subscriptions, and data fetching
+- **Component-Based**: Reusable Header and Footer components
+- **TypeScript**: Full type safety throughout the application
+
+## Tech Stack
+
+- Next.js 16.1.6
+- React 19.2.3
+- TypeScript 5
+- Tailwind CSS 4
+- PostCSS
 
 ## Getting Started
 
-First, run the development server:
-
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Run the development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+```
+├── app/
+│   ├── api/                 # API routes
+│   │   ├── contact/         # Contact form endpoint
+│   │   ├── newsletter/      # Newsletter subscription
+│   │   ├── services/        # Services data
+│   │   └── insights/        # Corporate insights/blog
+│   ├── components/          # Reusable components
+│   │   ├── Header.tsx       # Navigation header
+│   │   └── Footer.tsx       # Footer with newsletter
+│   ├── globals.css          # Global styles
+│   ├── layout.tsx           # Root layout
+│   └── page.tsx             # Landing page
+├── public/                  # Static assets
+└── package.json
+```
 
-To learn more about Next.js, take a look at the following resources:
+## API Endpoints
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### POST /api/contact
+Submit contact form
+```json
+{
+  "name": "string",
+  "email": "string",
+  "message": "string",
+  "company": "string (optional)"
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### POST /api/newsletter
+Subscribe to newsletter
+```json
+{
+  "email": "string"
+}
+```
 
-## Deploy on Vercel
+### GET /api/services
+Fetch all services
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### GET /api/insights
+Fetch corporate insights/blog posts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Sections
+
+1. **Hero Section**: Main headline with CTA buttons and growth statistics
+2. **Business Solutions**: Three service cards (Strategic Consulting, Digital Infrastructure, Asset Intelligence)
+3. **Ecosystem Technologies**: Product showcase with images
+4. **Corporate Insights**: Latest news and updates
+5. **Footer**: Company info, links, and newsletter subscription
+
+## Customization
+
+- Update colors in `app/globals.css` and Tailwind classes
+- Modify content in `app/page.tsx`
+- Add real images to `/public` folder
+- Integrate with your CRM/email service in API routes
+
+## Build for Production
+
+```bash
+npm run build
+npm start
+```
+
+## License
+
+© 2025 Travlor Solutions, Inc. All rights reserved.
