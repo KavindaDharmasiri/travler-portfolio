@@ -208,6 +208,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Portfolio Projects */}
+      <section id="portfolio" className={styles.section}>
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '3rem'}}>
+          <div>
+            <h2 className={styles.heading2} style={{marginBottom: '1rem'}}>Shopify Projects</h2>
+            <p style={{color: '#4b5563', maxWidth: '36rem'}}>A selection of custom Shopify storefronts we&apos;ve designed and developed for our clients.</p>
+          </div>
+        </div>
+        <div className={styles.servicesGrid}>
+          {[
+            { slug: 'purely', title: 'Purely', desc: 'Natural skincare brand with a clean, minimal storefront.', home: '/assets/shopify/purely/home.png' },
+            { slug: 'technova', title: 'TechNova', desc: 'Bold tech-forward store for electronics and gadgets.', home: '/assets/shopify/technova/home.png' },
+            { slug: 'velora', title: 'Velora', desc: 'Premium fashion store with full cart and checkout flow.', home: '/assets/shopify/velora/home.png' },
+          ].map((p) => (
+            <Link key={p.slug} href={`/portfolio/${p.slug}`} style={{textDecoration: 'none'}}>
+              <div className={styles.card} style={{padding: 0, overflow: 'hidden', cursor: 'pointer', transition: 'transform 0.2s, box-shadow 0.2s'}} onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)'; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 12px 24px -4px rgb(0 0 0 / 0.12)'; }} onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.transform = ''; (e.currentTarget as HTMLDivElement).style.boxShadow = ''; }}>
+                <div style={{position: 'relative', height: '13rem', backgroundColor: '#f3f4f6'}}>
+                  <Image src={p.home} alt={p.title} fill style={{objectFit: 'cover'}} />
+                  <div style={{position: 'absolute', top: '0.75rem', left: '0.75rem', backgroundColor: '#0f766e', color: '#fff', fontSize: '0.7rem', fontWeight: '600', padding: '0.2rem 0.6rem', borderRadius: '0.25rem', letterSpacing: '0.05em'}}>SHOPIFY</div>
+                </div>
+                <div style={{padding: '1.25rem'}}>
+                  <h3 className={styles.heading3} style={{marginBottom: '0.4rem'}}>{p.title}</h3>
+                  <p style={{color: '#6b7280', fontSize: '0.875rem', marginBottom: '0.75rem'}}>{p.desc}</p>
+                  <span style={{fontSize: '0.8rem', color: '#0f766e', fontWeight: '500'}}>View Project →</span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* Corporate Insights */}
       <section className={styles.darkSection}>
         <div className={styles.section} style={{paddingTop: 0, paddingBottom: 0}}>
@@ -305,7 +336,7 @@ export default function Home() {
             </div>
           </div>
           <div style={{paddingTop: '2rem', borderTop: '1px solid #e5e7eb', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.875rem', color: '#4b5563', flexWrap: 'wrap', gap: '1rem'}}>
-            <p>© 2025 Travler Solutions, Inc. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Travler Solutions, Inc. All rights reserved.</p>
             <div style={{display: 'flex', gap: '1.5rem'}}>
               <Link href="/privacy">Privacy Policy</Link>
               <Link href="/terms">Terms of Service</Link>

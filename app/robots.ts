@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/'],
     },
-    sitemap: 'https://travler.com/sitemap.xml',
+    sitemap: 'https://travler.lk/sitemap.xml',
   }
 }

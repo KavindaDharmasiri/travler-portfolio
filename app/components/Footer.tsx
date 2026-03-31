@@ -116,7 +116,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-600">
-          <p>© 2025 Travlor Solutions, Inc. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Travlor Solutions, Inc. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-gray-900 transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-gray-900 transition-colors">Terms of Service</Link>

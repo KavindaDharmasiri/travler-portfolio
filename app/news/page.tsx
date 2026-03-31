@@ -271,7 +271,7 @@ export default function NewsPage() {
             </div>
           </div>
           <div style={{paddingTop: '2rem', borderTop: '1px solid #e5e7eb', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.875rem', color: '#4b5563', flexWrap: 'wrap', gap: '1rem'}}>
-            <p>© 2025 Travler Solutions, Inc. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Travler Solutions, Inc. All rights reserved.</p>
             <div style={{display: 'flex', gap: '1.5rem'}}>
               <Link href="/privacy">Privacy Policy</Link>
               <Link href="/terms">Terms of Service</Link>

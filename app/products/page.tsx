@@ -1,72 +1,119 @@
 'use client';
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 import styles from '../styles.module.css';
 
+type Item = {
+  title: string;
+  description: string;
+  badge: string;
+  category: string;
+  image: string;
+  href: string;
+  meta: string;
+};
+
+const allItems: Item[] = [
+  {
+    title: 'Vision Analytics Pro',
+    description: 'Advanced data visualization and predictive analytics for real-time business intelligence.',
+    badge: 'FEATURED',
+    category: 'Software',
+    image: '/assets/Futuristic%20minimalist%20tablet%20showing%20the%20Travler%20Enterprise%20Suite%20v4.0%20dashboard.png',
+    href: '/products/0',
+    meta: '$299/mo',
+  },
+  {
+    title: 'Sentinel Shield AI',
+    description: 'Enterprise-grade cybersecurity powered by advanced threat detection and response capabilities.',
+    badge: 'FEATURED',
+    category: 'Security',
+    image: '/assets/Cloud%20Connect%20Pro%20-%20Modern%20data%20center%20servers%20with%20blue%20neon%20lights.png',
+    href: '/products/1',
+    meta: '$450/mo',
+  },
+  {
+    title: 'Nexus Node X1',
+    description: 'High-performance edge computing nodes for decentralized data processing and analytics.',
+    badge: 'FEATURED',
+    category: 'Hardware',
+    image: '/assets/Neural%20Analytics%20Hub%20-%203D%20network%20visualization%20of%20glowing%20data%20points.png',
+    href: '/products/2',
+    meta: '$1,200',
+  },
+  {
+    title: 'SkyFlow Infrastructure',
+    description: 'Scalable cloud infrastructure with automated scaling for high-traffic web applications.',
+    badge: '',
+    category: 'Cloud',
+    image: '/assets/Cloud%20Connect%20Pro%20-%20Modern%20data%20center%20servers%20with%20blue%20neon%20lights.png',
+    href: '/products/3',
+    meta: '$89/mo',
+  },
+  {
+    title: 'VaultLock Key Manager',
+    description: 'Enterprise-grade encryption key management for sensitive financial and healthcare data compliance.',
+    badge: 'FEATURED',
+    category: 'Security',
+    image: '/assets/Cloud%20Connect%20Pro%20-%20Modern%20data%20center%20servers%20with%20blue%20neon%20lights.png',
+    href: '/products/4',
+    meta: '$199/mo',
+  },
+  {
+    title: 'DevOps Master Console',
+    description: 'Comprehensive CI/CD platform for Kubernetes, Docker operations, and automated testing workflows.',
+    badge: 'FEATURED',
+    category: 'Software',
+    image: '/assets/Futuristic%20minimalist%20tablet%20showing%20the%20Travler%20Enterprise%20Suite%20v4.0%20dashboard.png',
+    href: '/products/5',
+    meta: '$599/mo',
+  },
+  {
+    title: 'Purely',
+    description: 'Natural skincare brand Shopify storefront with a clean, minimal aesthetic and seamless shopping experience.',
+    badge: 'SHOPIFY',
+    category: 'Shopify',
+    image: '/assets/shopify/purely/home.png',
+    href: '/portfolio/purely',
+    meta: 'View Project',
+  },
+  {
+    title: 'TechNova',
+    description: 'Bold, tech-forward Shopify store for electronics and gadget retailers with a dark, modern UI.',
+    badge: 'SHOPIFY',
+    category: 'Shopify',
+    image: '/assets/shopify/technova/home.png',
+    href: '/portfolio/technova',
+    meta: 'View Project',
+  },
+  {
+    title: 'Velora',
+    description: 'Premium fashion Shopify store with elegant typography, full cart flow, and a polished checkout experience.',
+    badge: 'SHOPIFY',
+    category: 'Shopify',
+    image: '/assets/shopify/velora/home.png',
+    href: '/portfolio/velora',
+    meta: 'View Project',
+  },
+];
+
+const tabs = ['All', 'Software', 'Hardware', 'Security', 'Cloud', 'Shopify'];
+
 export default function ProductsPage() {
-  const products = [
-    {
-      title: "Vision Analytics Pro",
-      description: "Advanced data visualization and predictive analytics for real-time business intelligence.",
-      price: "$299/mo",
-      image: "/assets/Futuristic%20minimalist%20tablet%20showing%20the%20Travler%20Enterprise%20Suite%20v4.0%20dashboard.png",
-      featured: false
-    },
-    {
-      title: "Sentinel Shield AI",
-      description: "Enterprise-grade cybersecurity powered by advanced threat detection and response capabilities.",
-      price: "$450/mo",
-      image: "/assets/Cloud%20Connect%20Pro%20-%20Modern%20data%20center%20servers%20with%20blue%20neon%20lights.png",
-      featured: true
-    },
-    {
-      title: "Nexus Node X1",
-      description: "High-performance edge computing nodes for decentralized data processing and analytics.",
-      price: "$1,200",
-      image: "/assets/Neural%20Analytics%20Hub%20-%203D%20network%20visualization%20of%20glowing%20data%20points.png",
-      featured: true
-    },
-    {
-      title: "SkyFlow Infrastructure",
-      description: "Scalable cloud infrastructure with automated scaling for high-traffic web applications.",
-      price: "$89/mo",
-      image: "/assets/Cloud%20Connect%20Pro%20-%20Modern%20data%20center%20servers%20with%20blue%20neon%20lights.png",
-      featured: false
-    },
-    {
-      title: "VaultLock Key Manager",
-      description: "Enterprise-grade encryption key management for sensitive financial and healthcare data compliance.",
-      price: "$199/mo",
-      image: "/assets/Cloud%20Connect%20Pro%20-%20Modern%20data%20center%20servers%20with%20blue%20neon%20lights.png",
-      featured: true
-    },
-    {
-      title: "DevOps Master Console",
-      description: "Comprehensive CI/CD platform for Kubernetes, Docker operations, and automated testing workflows.",
-      price: "$599/mo",
-      image: "/assets/Futuristic%20minimalist%20tablet%20showing%20the%20Travler%20Enterprise%20Suite%20v4.0%20dashboard.png",
-      featured: true
-    }
-  ];
+  const [active, setActive] = useState('All');
+
+  const filtered = active === 'All' ? allItems : allItems.filter((i) => i.category === active);
 
   return (
     <div className={styles.page}>
-      {/* Header */}
       <header className={styles.header}>
         <div className={styles.headerContainer}>
-          <div style={{display: 'flex', alignItems: 'center', gap: '2rem'}}>
-            <Link href="/" style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-              <Image
-                src="/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png"
-                alt="Travler"
-                width={32}
-                height={32}
-                style={{objectFit: 'contain'}}
-              />
-              <span style={{fontSize: '1.125rem', fontWeight: '600'}}>Travler</span>
-            </Link>
-          </div>
+          <Link href="/" style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+            <Image src="/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png" alt="Travler" width={32} height={32} style={{objectFit: 'contain'}} />
+            <span style={{fontSize: '1.125rem', fontWeight: '600'}}>Travler</span>
+          </Link>
           <nav className={styles.nav}>
             <Link href="/careers" className={styles.navLink}>Careers</Link>
             <Link href="/products" className={styles.navLink}>Products</Link>
@@ -75,98 +122,77 @@ export default function ProductsPage() {
           </nav>
           <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
             <div className={styles.searchBox}>
-              <input
-                type="text"
-                placeholder="Search products..."
-                className={styles.searchInput}
-              />
+              <input type="text" placeholder="Search products..." className={styles.searchInput} />
               <svg className={styles.searchIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
-            <Link href="/contact">
-              <button className={styles.btnPrimary}>Contact Us</button>
-            </Link>
+            <Link href="/contact"><button className={styles.btnPrimary}>Contact Us</button></Link>
           </div>
         </div>
       </header>
 
-      {/* Hero Section */}
       <section style={{background: 'linear-gradient(135deg, #0f766e 0%, #134e4a 100%)', padding: '4rem 0'}}>
         <div className={styles.section} style={{paddingTop: 0, paddingBottom: 0}}>
           <div style={{maxWidth: '48rem'}}>
-            <p style={{fontSize: '0.75rem', color: '#ccfbf1', marginBottom: '1rem', letterSpacing: '0.05em', textTransform: 'uppercase'}}>
-              Next-Gen Tech Stack
-            </p>
-            <h1 style={{fontSize: '3rem', fontWeight: '700', color: '#ffffff', marginBottom: '1.5rem', lineHeight: '1.2'}}>
-              Innovative Solutions for Tomorrow
-            </h1>
-            <p style={{fontSize: '1.125rem', color: '#ccfbf1', lineHeight: '1.6'}}>
-              Empower your business with intelligent platforms designed to streamline operations and fuel growth and innovation.
-            </p>
+            <p style={{fontSize: '0.75rem', color: '#ccfbf1', marginBottom: '1rem', letterSpacing: '0.05em', textTransform: 'uppercase'}}>Next-Gen Tech Stack</p>
+            <h1 style={{fontSize: '3rem', fontWeight: '700', color: '#ffffff', marginBottom: '1.5rem', lineHeight: '1.2'}}>Innovative Solutions for Tomorrow</h1>
+            <p style={{fontSize: '1.125rem', color: '#ccfbf1', lineHeight: '1.6'}}>Empower your business with intelligent platforms designed to streamline operations and fuel growth and innovation.</p>
           </div>
         </div>
       </section>
 
-      {/* Filter Tabs */}
       <section className={styles.section} style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
-        <div style={{display: 'flex', gap: '1rem', borderBottom: '1px solid #e5e7eb', paddingBottom: '1rem'}}>
-          <button style={{padding: '0.5rem 1.5rem', backgroundColor: '#0f766e', color: '#ffffff', borderRadius: '0.375rem', fontSize: '0.875rem', fontWeight: '500'}}>
-            All Products
-          </button>
-          <button style={{padding: '0.5rem 1.5rem', backgroundColor: 'transparent', color: '#4b5563', fontSize: '0.875rem', fontWeight: '500'}}>
-            Software
-          </button>
-          <button style={{padding: '0.5rem 1.5rem', backgroundColor: 'transparent', color: '#4b5563', fontSize: '0.875rem', fontWeight: '500'}}>
-            Hardware
-          </button>
-          <button style={{padding: '0.5rem 1.5rem', backgroundColor: 'transparent', color: '#4b5563', fontSize: '0.875rem', fontWeight: '500'}}>
-            Security
-          </button>
-          <button style={{padding: '0.5rem 1.5rem', backgroundColor: 'transparent', color: '#4b5563', fontSize: '0.875rem', fontWeight: '500'}}>
-            Cloud
-          </button>
-          <div style={{marginLeft: 'auto', display: 'flex', gap: '1rem', alignItems: 'center'}}>
-            <span style={{fontSize: '0.875rem', color: '#6b7280'}}>Sort By:</span>
-            <select style={{padding: '0.5rem', border: '1px solid #e5e7eb', borderRadius: '0.375rem', fontSize: '0.875rem'}}>
-              <option>Latest</option>
-              <option>Price: Low to High</option>
-              <option>Price: High to Low</option>
-              <option>Popular</option>
-            </select>
-          </div>
+        <div style={{display: 'flex', gap: '0.5rem', borderBottom: '1px solid #e5e7eb', paddingBottom: '1rem', flexWrap: 'wrap'}}>
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActive(tab)}
+              style={{
+                padding: '0.5rem 1.25rem',
+                backgroundColor: active === tab ? '#0f766e' : 'transparent',
+                color: active === tab ? '#ffffff' : '#4b5563',
+                borderRadius: '0.375rem',
+                fontSize: '0.875rem',
+                fontWeight: '500',
+                border: 'none',
+                cursor: 'pointer',
+              }}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
       </section>
 
-      {/* Products Grid */}
-      <section className={styles.section} style={{paddingTop: '2rem'}}>
+      <section className={styles.section} style={{paddingTop: '1rem'}}>
         <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '2rem'}}>
-          {products.map((product, index) => (
-            <div key={index} className={styles.card} style={{padding: 0, overflow: 'hidden', position: 'relative'}}>
-              {product.featured && (
-                <div style={{position: 'absolute', top: '1rem', right: '1rem', backgroundColor: '#0f766e', color: '#ffffff', padding: '0.25rem 0.75rem', borderRadius: '0.25rem', fontSize: '0.75rem', fontWeight: '600', zIndex: 10}}>
-                  FEATURED
+          {filtered.map((item) => (
+            <div key={item.title} className={styles.card} style={{padding: 0, overflow: 'hidden', position: 'relative'}}>
+              {item.badge && (
+                <div style={{
+                  position: 'absolute', top: '1rem',
+                  right: item.badge === 'SHOPIFY' ? undefined : '1rem',
+                  left: item.badge === 'SHOPIFY' ? '1rem' : undefined,
+                  backgroundColor: '#0f766e', color: '#ffffff',
+                  padding: '0.25rem 0.75rem', borderRadius: '0.25rem',
+                  fontSize: '0.7rem', fontWeight: '600', zIndex: 10,
+                }}>
+                  {item.badge}
                 </div>
               )}
               <div style={{position: 'relative', height: '12rem', backgroundColor: '#111827'}}>
-                <Image
-                  src={product.image}
-                  alt={product.title}
-                  fill
-                  style={{objectFit: 'cover'}}
-                />
+                <Image src={item.image} alt={item.title} fill style={{objectFit: 'cover'}} />
               </div>
               <div style={{padding: '1.5rem'}}>
-                <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>{product.title}</h3>
-                <p style={{color: '#6b7280', fontSize: '0.875rem', marginBottom: '1rem', lineHeight: '1.6'}}>
-                  {product.description}
-                </p>
+                <span style={{fontSize: '0.7rem', color: '#9ca3af', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em'}}>{item.category}</span>
+                <h3 style={{fontSize: '1.25rem', fontWeight: '700', margin: '0.35rem 0 0.5rem'}}>{item.title}</h3>
+                <p style={{color: '#6b7280', fontSize: '0.875rem', marginBottom: '1rem', lineHeight: '1.6'}}>{item.description}</p>
                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                  <span style={{fontSize: '1.5rem', fontWeight: '700', color: '#0f766e'}}>{product.price}</span>
-                  <Link href={`/products/${index}`}>
-                    <button style={{padding: '0.5rem 1rem', backgroundColor: 'transparent', border: '1px solid #0f766e', color: '#0f766e', borderRadius: '0.375rem', fontSize: '0.875rem', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                      Learn More
-                      <span>→</span>
+                  <span style={{fontSize: item.category === 'Shopify' ? '0.875rem' : '1.5rem', fontWeight: '700', color: '#0f766e'}}>{item.meta}</span>
+                  <Link href={item.href}>
+                    <button style={{padding: '0.5rem 1rem', backgroundColor: 'transparent', border: '1px solid #0f766e', color: '#0f766e', borderRadius: '0.375rem', fontSize: '0.875rem', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer'}}>
+                      {item.category === 'Shopify' ? 'View Project' : 'Learn More'} <span>→</span>
                     </button>
                   </Link>
                 </div>
@@ -176,55 +202,26 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section style={{backgroundColor: '#0f766e', padding: '4rem 0', marginTop: '4rem'}}>
         <div className={styles.section} style={{paddingTop: 0, paddingBottom: 0, textAlign: 'center'}}>
-          <h2 style={{fontSize: '2.25rem', fontWeight: '700', color: '#ffffff', marginBottom: '1rem'}}>
-            Ready to transform your vision?
-          </h2>
-          <p style={{fontSize: '1.125rem', color: '#ccfbf1', marginBottom: '2rem', maxWidth: '48rem', margin: '0 auto 2rem'}}>
-            Our consultants are ready to help you build the perfect tech stack for your organization's unique requirements.
-          </p>
+          <h2 style={{fontSize: '2.25rem', fontWeight: '700', color: '#ffffff', marginBottom: '1rem'}}>Ready to transform your vision?</h2>
+          <p style={{fontSize: '1.125rem', color: '#ccfbf1', maxWidth: '48rem', margin: '0 auto 2rem'}}>Our consultants are ready to help you build the perfect tech stack for your organization&apos;s unique requirements.</p>
           <div style={{display: 'flex', gap: '1rem', justifyContent: 'center'}}>
-            <button style={{padding: '0.75rem 2rem', backgroundColor: '#ffffff', color: '#0f766e', borderRadius: '0.375rem', fontSize: '1rem', fontWeight: '600'}}>
-              Book a Consultation
-            </button>
-            <button style={{padding: '0.75rem 2rem', backgroundColor: 'transparent', border: '2px solid #ffffff', color: '#ffffff', borderRadius: '0.375rem', fontSize: '1rem', fontWeight: '600'}}>
-              Download Catalog
-            </button>
+            <button style={{padding: '0.75rem 2rem', backgroundColor: '#ffffff', color: '#0f766e', borderRadius: '0.375rem', fontSize: '1rem', fontWeight: '600'}}>Book a Consultation</button>
+            <button style={{padding: '0.75rem 2rem', backgroundColor: 'transparent', border: '2px solid #ffffff', color: '#ffffff', borderRadius: '0.375rem', fontSize: '1rem', fontWeight: '600'}}>Download Catalog</button>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
       <footer className={styles.footer}>
         <div className={styles.section}>
           <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', flexWrap: 'wrap', gap: '3rem', marginBottom: '2rem'}}>
             <div style={{maxWidth: '20rem'}}>
               <Link href="/" style={{display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem'}}>
-                <Image
-                  src="/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png"
-                  alt="Travler"
-                  width={32}
-                  height={32}
-                  style={{objectFit: 'contain'}}
-                />
+                <Image src="/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png" alt="Travler" width={32} height={32} style={{objectFit: 'contain'}} />
                 <span style={{fontSize: '1.125rem', fontWeight: '600'}}>Travler</span>
               </Link>
-              <p style={{fontSize: '0.875rem', color: '#4b5563', lineHeight: '1.6'}}>
-                Leading the transition to a digitally empowered corporate world with intelligence, strategy, and execution.
-              </p>
-              <div style={{display: 'flex', gap: '0.75rem', marginTop: '1rem'}}>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" style={{width: '2rem', height: '2rem', backgroundColor: '#f3f4f6', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                  <span style={{fontSize: '0.875rem'}}>𝕏</span>
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style={{width: '2rem', height: '2rem', backgroundColor: '#f3f4f6', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                  <span style={{fontSize: '0.875rem'}}>in</span>
-                </a>
-                <a href="mailto:info@travler.com" style={{width: '2rem', height: '2rem', backgroundColor: '#f3f4f6', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                  <span style={{fontSize: '0.875rem'}}>@</span>
-                </a>
-              </div>
+              <p style={{fontSize: '0.875rem', color: '#4b5563', lineHeight: '1.6'}}>Leading the transition to a digitally empowered corporate world with intelligence, strategy, and execution.</p>
             </div>
             <div>
               <h4 style={{fontWeight: '700', marginBottom: '1rem', fontSize: '0.75rem', letterSpacing: '0.05em'}}>COMPANY</h4>
@@ -246,21 +243,15 @@ export default function ProductsPage() {
             </div>
             <div style={{maxWidth: '20rem'}}>
               <h4 style={{fontWeight: '700', marginBottom: '1rem', fontSize: '0.75rem', letterSpacing: '0.05em'}}>NEWSLETTER</h4>
-              <p style={{fontSize: '0.875rem', color: '#4b5563', marginBottom: '1rem'}}>
-                Stay updated with our latest industry insights and updates.
-              </p>
+              <p style={{fontSize: '0.875rem', color: '#4b5563', marginBottom: '1rem'}}>Stay updated with our latest industry insights and updates.</p>
               <div style={{display: 'flex', gap: '0.5rem'}}>
-                <input
-                  type="email"
-                  placeholder="Email address"
-                  style={{flex: 1, padding: '0.5rem 0.75rem', fontSize: '0.875rem', border: '1px solid #d1d5db', borderRadius: '0.375rem'}}
-                />
+                <input type="email" placeholder="Email address" style={{flex: 1, padding: '0.5rem 0.75rem', fontSize: '0.875rem', border: '1px solid #d1d5db', borderRadius: '0.375rem'}} />
                 <button className={styles.btnPrimary} style={{padding: '0.5rem 1rem'}}>Subscribe</button>
               </div>
             </div>
           </div>
           <div style={{paddingTop: '2rem', borderTop: '1px solid #e5e7eb', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.875rem', color: '#4b5563', flexWrap: 'wrap', gap: '1rem'}}>
-            <p>© 2025 Travler Solutions, Inc. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Travler Solutions, Inc. All rights reserved.</p>
             <div style={{display: 'flex', gap: '1.5rem'}}>
               <Link href="/privacy">Privacy Policy</Link>
               <Link href="/terms">Terms of Service</Link>
