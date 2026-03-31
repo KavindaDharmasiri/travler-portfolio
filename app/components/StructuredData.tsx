@@ -4,7 +4,7 @@ export default function StructuredData() {
     "@type": "WebSite",
     "name": "Travler",
     "alternateName": "Travler Solutions",
-    "url": "https://travler.lk",
+    "url": "https://travler.lk/",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
@@ -20,7 +20,7 @@ export default function StructuredData() {
     "@type": "Organization",
     "name": "Travler",
     "alternateName": "Travler Solutions",
-    "url": "https://travler.lk",
+    "url": "https://travler.lk/",
     "logo": {
       "@type": "ImageObject",
       "url": "https://travler.lk/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png",
@@ -45,26 +45,20 @@ export default function StructuredData() {
 
   const siteLinksSchema = {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Travler Site Sections",
-    "itemListElement": [
-      {
-        "@type": "SiteLinksSearchBox",
-        "url": "https://travler.lk",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://travler.lk/products?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
-      }
-    ]
+    "@type": "WebSite",
+    "url": "https://travler.lk/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://travler.lk/products?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
   };
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://travler.lk" },
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://travler.lk/" },
       { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://travler.lk/products" },
       { "@type": "ListItem", "position": 3, "name": "Careers", "item": "https://travler.lk/careers" },
       { "@type": "ListItem", "position": 4, "name": "About", "item": "https://travler.lk/about" },

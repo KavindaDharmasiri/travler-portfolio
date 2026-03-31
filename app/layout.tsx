@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://travler.lk'),
+  metadataBase: new URL('https://travler.lk/'),
   title: {
     default: "Travler | Corporate Digital Solutions & Business Transformation",
     template: "%s | Travler"
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://travler.lk",
+    url: "https://travler.lk/",
     siteName: "Travler",
     title: "Travler | Corporate Digital Solutions & Business Transformation",
     description: "Travler delivers strategic consulting, Shopify development, and digital infrastructure solutions for enterprise success.",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://travler.lk',
+    canonical: 'https://travler.lk/',
   },
 };
 
@@ -75,7 +75,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://travler.lk" />
+        <link rel="canonical" href="https://travler.lk/" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <StructuredData />
