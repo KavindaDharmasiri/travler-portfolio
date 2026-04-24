@@ -33,7 +33,7 @@ export default function SiteFooter() {
               Leading the transition to a digitally empowered corporate world with intelligence, strategy, and execution.
             </p>
             <div style={{ display: 'flex', gap: '0.625rem' }}>
-              {[{ href: 'https://twitter.com/travler', label: '𝕏' }, { href: 'https://linkedin.com/company/travler', label: 'in' }, { href: 'mailto:travlerofficial2025@gmail.com', label: '@' }].map((s) => (
+              {[{ href: 'https://twitter.com/travler', label: '𝕏' }, { href: 'https://www.linkedin.com/company/travler-solutions/', label: 'in' }, { href: 'mailto:travlerofficial2025@gmail.com', label: '@' }].map((s) => (
                 <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
                   style={{ width: '2rem', height: '2rem', background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', color: 'var(--text-secondary)', transition: 'border-color 0.2s, color 0.2s' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--accent)'; (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent)'; }}
