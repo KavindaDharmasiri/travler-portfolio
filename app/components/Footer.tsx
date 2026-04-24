@@ -52,7 +52,7 @@ export default function Footer() {
                 <span className="text-sm">𝕏</span>
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/company/travlerr/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
