@@ -1,0 +1,104 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Dark theme (default) ── */
+:root {
+  --bg:           #0d1f1e;
+  --bg-secondary: #122221;
+  --bg-card:      #163330;
+  --bg-card-hover:#1a3d3a;
+  --border:       #1f4a46;
+  --border-hover: #2a6460;
+  --text-primary: #f0faf9;
+  --text-secondary:#94b8b5;
+  --text-muted:   #5f8a86;
+  --accent:       #0F766E;
+  --accent-hover: #0d6b63;
+  --accent-text:  #ffffff;
+  --btn-secondary-bg:    #163330;
+  --btn-secondary-border:#1f4a46;
+  --btn-secondary-text:  #a8d5d1;
+  --input-bg:     #122221;
+  --input-border: #1f4a46;
+  --input-text:   #f0faf9;
+  --input-placeholder: #5f8a86;
+  --badge-bg:     #0d3330;
+  --badge-text:   #5eead4;
+  --badge-border: #0f5550;
+  --nav-text:     #a8d5d1;
+  --nav-text-hover:#f0faf9;
+  --header-bg:    rgba(13, 31, 30, 0.92);
+  --footer-bg:    #0a1918;
+  --section-alt:  #0f2826;
+  --shadow:       0 4px 24px rgba(0,0,0,0.5);
+  --shadow-card:  0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* ── Light theme ── */
+[data-theme="light"] {
+  --bg:           #ffffff;
+  --bg-secondary: #f0faf9;
+  --bg-card:      #ffffff;
+  --bg-card-hover:#f0faf9;
+  --border:       #d1ece9;
+  --border-hover: #a7d9d4;
+  --text-primary: #0a1918;
+  --text-secondary:#3d6b67;
+  --text-muted:   #7aaba7;
+  --accent:       #0F766E;
+  --accent-hover: #0d6b63;
+  --accent-text:  #ffffff;
+  --btn-secondary-bg:    #ffffff;
+  --btn-secondary-border:#d1ece9;
+  --btn-secondary-text:  #0F766E;
+  --input-bg:     #ffffff;
+  --input-border: #d1ece9;
+  --input-text:   #0a1918;
+  --input-placeholder: #7aaba7;
+  --badge-bg:     #e6f7f5;
+  --badge-text:   #0F766E;
+  --badge-border: #a7d9d4;
+  --nav-text:     #3d6b67;
+  --nav-text-hover:#0a1918;
+  --header-bg:    rgba(255, 255, 255, 0.95);
+  --footer-bg:    #f0faf9;
+  --section-alt:  #f0faf9;
+  --shadow:       0 4px 24px rgba(15,118,110,0.08);
+  --shadow-card:  0 2px 8px rgba(15,118,110,0.06);
+}
+
+body {
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #0F766E; }
+::selection { background: rgba(15, 118, 110, 0.25); }
