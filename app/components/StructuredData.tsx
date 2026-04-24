@@ -39,7 +39,7 @@ export default function StructuredData() {
     },
     "sameAs": [
       "https://twitter.com/travler",
-      "https://linkedin.com/company/travler"
+      "https://www.linkedin.com/company/travler-solutions/"
     ]
   };
 
