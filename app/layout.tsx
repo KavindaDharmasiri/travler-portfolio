@@ -77,7 +77,8 @@ export default function RootLayout({
       <head>
         <link rel="canonical" href="https://travler.lk/" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png" />
         <StructuredData />
       </head>
       <body
