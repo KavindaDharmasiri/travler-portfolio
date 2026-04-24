@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     title: "Travler | Corporate Digital Solutions & Business Transformation",
     description: "Travler delivers strategic consulting, Shopify development, and digital infrastructure solutions for enterprise success.",
     images: [{
-      url: "/assets/Modern%20glass%20corporate%20office%20interior%20with%20sunset%20lighting%20representing%20business%20growth.png",
-      width: 1200,
-      height: 630,
+      url: "https://travler.lk/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png",
+      width: 512,
+      height: 512,
       alt: "Travler - Corporate Digital Solutions",
     }],
   },
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Travler | Corporate Digital Solutions",
     description: "Travler delivers strategic consulting, Shopify development, and digital infrastructure solutions.",
-    images: ["/assets/Modern%20glass%20corporate%20office%20interior%20with%20sunset%20lighting%20representing%20business%20growth.png"],
+    images: ["https://travler.lk/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png"],
   },
   robots: {
     index: true,
@@ -64,6 +64,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://travler.lk/',
+  },
+  icons: {
+    icon: '/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png',
+    apple: '/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png',
+    shortcut: '/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png',
   },
 };
 
