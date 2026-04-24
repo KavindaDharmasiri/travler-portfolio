@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react";
 import styles from '../styles.module.css';
 import SiteHeader from '../components/SiteHeader';
 import SiteFooter from '../components/SiteFooter';
@@ -27,12 +27,12 @@ const tabs = ['All', 'Software', 'Hardware', 'Security', 'Cloud', 'Shopify'];
 export default function ProductsPage() {
   const [active, setActive] = useState('All');
   const searchParams = useSearchParams();
-  const q = searchParams.get('q') || '';
-  const [searchQuery, setSearchQuery] = useState(q);
+  const q = searchParams.get("q") || "";
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    setSearchQuery(searchParams.get('q') || '');
-  }, [searchParams]);
+    setSearchQuery(q);
+  }, [q]);
 
   const filtered = allItems.filter(i => {
     const matchesTab = active === 'All' || i.category === active;
