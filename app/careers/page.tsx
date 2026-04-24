@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from '../styles.module.css';
+import SiteHeader from '../components/SiteHeader';
+import SiteFooter from '../components/SiteFooter';
 
 export default function CareersPage() {
   const benefits = [
@@ -21,34 +23,7 @@ export default function CareersPage() {
 
   return (
     <div className={styles.page}>
-      {/* Header */}
-      <header className={styles.header}>
-        <div className={styles.headerContainer}>
-          <div style={{display: 'flex', alignItems: 'center', gap: '2rem'}}>
-            <Link href="/" style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-              <Image src="/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png" alt="Travler" width={32} height={32} style={{objectFit: 'contain'}} />
-              <span style={{fontSize: '1.125rem', fontWeight: '600'}}>Travler</span>
-            </Link>
-          </div>
-          <nav className={styles.nav}>
-            <Link href="/careers" className={styles.navLink}>Careers</Link>
-            <Link href="/products" className={styles.navLink}>Products</Link>
-            <Link href="/news" className={styles.navLink}>News</Link>
-            <Link href="/about" className={styles.navLink}>About</Link>
-          </nav>
-          <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
-            <div className={styles.searchBox}>
-              <input type="text" placeholder="Search jobs..." className={styles.searchInput} />
-              <svg className={styles.searchIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-            <Link href="/contact">
-              <button className={styles.btnPrimary}>Contact Us</button>
-            </Link>
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Hero */}
       <section className={styles.section}>
@@ -96,8 +71,8 @@ export default function CareersPage() {
       </section>
 
       {/* Life at Travler */}
-      <section className={styles.section} style={{backgroundColor: '#f9fafb', margin: '0 -100vw', padding: '4rem 100vw'}}>
-        <div style={{maxWidth: '80rem', margin: '0 auto'}}>
+      <section style={{backgroundColor: '#f9fafb', padding: '4rem 0'}}>
+        <div className={styles.section} style={{paddingTop: 0, paddingBottom: 0}}>
           <h2 className={styles.heading2} style={{textAlign: 'center', marginBottom: '1rem'}}>Life at Travler</h2>
           <p style={{textAlign: 'center', color: '#4b5563', maxWidth: '48rem', margin: '0 auto 3rem'}}>
             We thrive on an environment that fosters creativity, collaboration, and continuous learning. Explore our work culture and growth.
@@ -151,14 +126,14 @@ export default function CareersPage() {
       </section>
 
       {/* Open Positions */}
-      <section className={styles.section} style={{backgroundColor: '#f9fafb', margin: '0 -100vw', padding: '4rem 100vw'}}>
-        <div style={{maxWidth: '80rem', margin: '0 auto'}}>
-          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
+      <section style={{backgroundColor: '#f9fafb', padding: '4rem 0'}}>
+        <div className={styles.section} style={{paddingTop: 0, paddingBottom: 0}}>
+          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem'}}>
             <div>
               <h2 className={styles.heading2} style={{marginBottom: '0.5rem'}}>Open Positions</h2>
               <p style={{color: '#6b7280', fontSize: '0.875rem'}}>We are currently looking for Engineering, Data Ops, and Product...</p>
             </div>
-            <div style={{display: 'flex', gap: '1rem', alignItems: 'center'}}>
+            <div style={{display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap'}}>
               <input type="text" placeholder="🔍 Search job titles..." style={{padding: '0.5rem 1rem', border: '1px solid #e5e7eb', borderRadius: '0.375rem', fontSize: '0.875rem'}} />
               <select style={{padding: '0.5rem 1rem', border: '1px solid #e5e7eb', borderRadius: '0.375rem', fontSize: '0.875rem'}}>
                 <option>All Departments</option>
@@ -170,7 +145,7 @@ export default function CareersPage() {
           </div>
           <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
             {jobs.map((job, index) => (
-              <div key={index} style={{backgroundColor: '#ffffff', padding: '1.5rem', borderRadius: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1)'}}>
+              <div key={index} style={{backgroundColor: '#ffffff', padding: '1.5rem', borderRadius: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1)'}}>
                 <div style={{flex: 1}}>
                   <div style={{display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '0.5rem'}}>
                     <span style={{padding: '0.25rem 0.75rem', backgroundColor: '#ccfbf1', color: '#0f766e', fontSize: '0.75rem', fontWeight: '600', borderRadius: '0.25rem'}}>{job.department}</span>
@@ -179,7 +154,7 @@ export default function CareersPage() {
                   <h3 style={{fontSize: '1.125rem', fontWeight: '700', marginBottom: '0.5rem'}}>{job.title}</h3>
                   <p style={{color: '#6b7280', fontSize: '0.875rem'}}>{job.description}</p>
                 </div>
-                <button className={styles.btnPrimary} style={{padding: '0.5rem 1.5rem', marginLeft: '2rem'}}>
+                <button className={styles.btnPrimary} style={{padding: '0.5rem 1.5rem', flexShrink: 0}}>
                   Apply Now
                 </button>
               </div>
@@ -197,69 +172,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <div className={styles.section}>
-          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', flexWrap: 'wrap', gap: '3rem', marginBottom: '2rem'}}>
-            <div style={{maxWidth: '20rem'}}>
-              <Link href="/" style={{display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem'}}>
-                <Image src="/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png" alt="Travler" width={32} height={32} style={{objectFit: 'contain'}} />
-                <span style={{fontSize: '1.125rem', fontWeight: '600'}}>Travler</span>
-              </Link>
-              <p style={{fontSize: '0.875rem', color: '#4b5563', lineHeight: '1.6'}}>
-                Leading the transition to a digitally empowered corporate world with intelligence, strategy, and execution.
-              </p>
-              <div style={{display: 'flex', gap: '0.75rem', marginTop: '1rem'}}>
-                <a href="#" style={{width: '2rem', height: '2rem', backgroundColor: '#f3f4f6', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                  <span style={{fontSize: '0.875rem'}}>𝕏</span>
-                </a>
-                <a href="#" style={{width: '2rem', height: '2rem', backgroundColor: '#f3f4f6', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                  <span style={{fontSize: '0.875rem'}}>in</span>
-                </a>
-                <a href="#" style={{width: '2rem', height: '2rem', backgroundColor: '#f3f4f6', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                  <span style={{fontSize: '0.875rem'}}>@</span>
-                </a>
-              </div>
-            </div>
-            <div>
-              <h4 style={{fontWeight: '700', marginBottom: '1rem', fontSize: '0.75rem', letterSpacing: '0.05em'}}>COMPANY</h4>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.875rem', color: '#4b5563'}}>
-                <Link href="/about">About Us</Link>
-                <Link href="/careers">Careers</Link>
-                <Link href="/leadership">Leadership</Link>
-                <Link href="/sustainability">Sustainability</Link>
-              </div>
-            </div>
-            <div>
-              <h4 style={{fontWeight: '700', marginBottom: '1rem', fontSize: '0.75rem', letterSpacing: '0.05em'}}>SERVICES</h4>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.875rem', color: '#4b5563'}}>
-                <Link href="/consulting">Strategic Consulting</Link>
-                <Link href="/infrastructure">Digital Solutions</Link>
-                <Link href="/cloud">Asset Management</Link>
-                <Link href="/engineering">Data Engineering</Link>
-              </div>
-            </div>
-            <div style={{maxWidth: '20rem'}}>
-              <h4 style={{fontWeight: '700', marginBottom: '1rem', fontSize: '0.75rem', letterSpacing: '0.05em'}}>NEWSLETTER</h4>
-              <p style={{fontSize: '0.875rem', color: '#4b5563', marginBottom: '1rem'}}>
-                Stay updated with our latest industry insights.
-              </p>
-              <div style={{display: 'flex', gap: '0.5rem'}}>
-                <input type="email" placeholder="Email address" style={{flex: 1, padding: '0.5rem 0.75rem', fontSize: '0.875rem', border: '1px solid #d1d5db', borderRadius: '0.375rem'}} />
-                <button className={styles.btnPrimary} style={{padding: '0.5rem 1rem'}}>Subscribe</button>
-              </div>
-            </div>
-          </div>
-          <div style={{paddingTop: '2rem', borderTop: '1px solid #e5e7eb', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.875rem', color: '#4b5563', flexWrap: 'wrap', gap: '1rem'}}>
-            <p>© {new Date().getFullYear()} Travler Solutions, Inc. All rights reserved.</p>
-            <div style={{display: 'flex', gap: '1.5rem'}}>
-              <Link href="/privacy">Privacy Policy</Link>
-              <Link href="/terms">Terms of Service</Link>
-              <Link href="/cookies">Cookie Settings</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

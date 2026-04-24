@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { use } from 'react';
 import styles from '../../styles.module.css';
+import SiteHeader from '../../components/SiteHeader';
+import SiteFooter from '../../components/SiteFooter';
 
 const projects: Record<string, {
   title: string;
@@ -75,21 +77,7 @@ export default function PortfolioDetail({ params }: { params: Promise<{ slug: st
 
   return (
     <div className={styles.page}>
-      <header className={styles.header}>
-        <div className={styles.headerContainer}>
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Image src="/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png" alt="Travler" width={32} height={32} style={{ objectFit: 'contain' }} />
-            <span style={{ fontSize: '1.125rem', fontWeight: '600' }}>Travler</span>
-          </Link>
-          <nav className={styles.nav}>
-            <Link href="/careers" className={styles.navLink}>Careers</Link>
-            <Link href="/products" className={styles.navLink}>Products</Link>
-            <Link href="/news" className={styles.navLink}>News</Link>
-            <Link href="/about" className={styles.navLink}>About</Link>
-          </nav>
-          <Link href="/contact"><button className={styles.btnPrimary}>Contact Us</button></Link>
-        </div>
-      </header>
+      <SiteHeader />
 
       <section className={styles.section}>
         <Link href="/#portfolio" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: '#6b7280', marginBottom: '2rem' }}>
@@ -114,7 +102,7 @@ export default function PortfolioDetail({ params }: { params: Promise<{ slug: st
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(480px, 1fr))', gap: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 480px), 1fr))', gap: '2rem' }}>
           {project.images.map((img) => (
             <div key={img.src} style={{ borderRadius: '0.75rem', overflow: 'hidden', border: '1px solid #e5e7eb', background: '#f9fafb' }}>
               <Image src={img.src} alt={img.label} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', display: 'block' }} />
@@ -127,11 +115,7 @@ export default function PortfolioDetail({ params }: { params: Promise<{ slug: st
         </div>
       </section>
 
-      <footer className={styles.footer}>
-        <div className={styles.section} style={{ paddingTop: '1.5rem', paddingBottom: '1.5rem' }}>
-          <p style={{ fontSize: '0.875rem', color: '#4b5563', textAlign: 'center' }}>© {new Date().getFullYear()} Travler Solutions, Inc. All rights reserved.</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

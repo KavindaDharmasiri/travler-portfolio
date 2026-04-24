@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import styles from '../styles.module.css';
+import SiteHeader from '../components/SiteHeader';
+import SiteFooter from '../components/SiteFooter';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
@@ -36,27 +38,13 @@ export default function ContactPage() {
 
   return (
     <div className={styles.page}>
-      <header className={styles.header}>
-        <div className={styles.headerContainer}>
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Image src="/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png" alt="Travler" width={32} height={32} style={{ objectFit: 'contain' }} />
-            <span style={{ fontSize: '1.125rem', fontWeight: '600' }}>Travler</span>
-          </Link>
-          <nav className={styles.nav}>
-            <Link href="/careers" className={styles.navLink}>Careers</Link>
-            <Link href="/products" className={styles.navLink}>Products</Link>
-            <Link href="/news" className={styles.navLink}>News</Link>
-            <Link href="/about" className={styles.navLink}>About</Link>
-          </nav>
-          <Link href="/contact"><button className={styles.btnPrimary}>Contact Us</button></Link>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Hero */}
       <section style={{ background: 'linear-gradient(135deg, #0f766e 0%, #134e4a 100%)', padding: '4rem 0' }}>
         <div className={styles.section} style={{ paddingTop: 0, paddingBottom: 0 }}>
           <p style={{ fontSize: '0.75rem', color: '#ccfbf1', marginBottom: '1rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Get In Touch</p>
-          <h1 style={{ fontSize: '3rem', fontWeight: '700', color: '#ffffff', marginBottom: '1rem', lineHeight: '1.2' }}>Contact Us</h1>
+          <h1 style={{ fontSize: 'clamp(1.75rem, 5vw, 3rem)', fontWeight: '700', color: '#ffffff', marginBottom: '1rem', lineHeight: '1.2' }}>Contact Us</h1>
           <p style={{ fontSize: '1.125rem', color: '#ccfbf1', lineHeight: '1.6', maxWidth: '40rem' }}>
             Ready to transform your business? Our team is here to help you navigate the digital landscape and achieve your goals.
           </p>
@@ -65,7 +53,7 @@ export default function ContactPage() {
 
       {/* Content */}
       <section className={styles.section}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '4rem', alignItems: 'start' }}>
+        <div className={styles.twoCol}>
 
           {/* Left — contact info */}
           <div>
@@ -168,50 +156,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <footer className={styles.footer}>
-        <div className={styles.section}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', flexWrap: 'wrap', gap: '3rem', marginBottom: '2rem' }}>
-            <div style={{ maxWidth: '20rem' }}>
-              <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-                <Image src="/assets/Travler%20-%20Corporate%20Digital%20Solutions%20Logo.png" alt="Travler" width={32} height={32} style={{ objectFit: 'contain' }} />
-                <span style={{ fontSize: '1.125rem', fontWeight: '600' }}>Travler</span>
-              </Link>
-              <p style={{ fontSize: '0.875rem', color: '#4b5563', lineHeight: '1.6' }}>Empowering digital transformation with innovative corporate tech solutions.</p>
-            </div>
-            <div>
-              <h4 style={{ fontWeight: '700', marginBottom: '1rem', fontSize: '0.75rem', letterSpacing: '0.05em' }}>COMPANY</h4>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.875rem', color: '#4b5563' }}>
-                <Link href="/about">About Us</Link>
-                <Link href="/careers">Careers</Link>
-                <Link href="/products">Products</Link>
-                <Link href="/news">News</Link>
-              </div>
-            </div>
-            <div>
-              <h4 style={{ fontWeight: '700', marginBottom: '1rem', fontSize: '0.75rem', letterSpacing: '0.05em' }}>SERVICES</h4>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.875rem', color: '#4b5563' }}>
-                <Link href="/consulting">Strategic Consulting</Link>
-                <Link href="/infrastructure">Digital Infrastructure</Link>
-                <Link href="/cloud">Cloud Management</Link>
-                <Link href="/engineering">Data Engineering</Link>
-              </div>
-            </div>
-            <div style={{ maxWidth: '20rem' }}>
-              <h4 style={{ fontWeight: '700', marginBottom: '1rem', fontSize: '0.75rem', letterSpacing: '0.05em' }}>CONTACT</h4>
-              <p style={{ fontSize: '0.875rem', color: '#4b5563', marginBottom: '0.5rem' }}>travlerofficial2025@gmail.com</p>
-              <p style={{ fontSize: '0.875rem', color: '#4b5563' }}>+1 (555) 123-4567</p>
-            </div>
-          </div>
-          <div style={{ paddingTop: '2rem', borderTop: '1px solid #e5e7eb', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.875rem', color: '#4b5563', flexWrap: 'wrap', gap: '1rem' }}>
-            <p>© {new Date().getFullYear()} Travler Solutions, Inc. All rights reserved.</p>
-            <div style={{ display: 'flex', gap: '1.5rem' }}>
-              <Link href="/privacy">Privacy Policy</Link>
-              <Link href="/terms">Terms of Service</Link>
-              <Link href="/cookies">Cookie Settings</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
