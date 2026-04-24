@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import styles from '../styles.module.css';
 import SiteHeader from '../components/SiteHeader';
 import SiteFooter from '../components/SiteFooter';
@@ -17,14 +17,11 @@ const allItems: Item[] = [
   { title: 'SkyFlow Infrastructure', description: 'Scalable cloud infrastructure with automated scaling for high-traffic web applications.', badge: '', category: 'Cloud', image: '/assets/Cloud%20Connect%20Pro%20-%20Modern%20data%20center%20servers%20with%20blue%20neon%20lights.png', href: '/products/3', meta: '$89/mo' },
   { title: 'VaultLock Key Manager', description: 'Enterprise-grade encryption key management for sensitive financial and healthcare data compliance.', badge: 'FEATURED', category: 'Security', image: '/assets/Cloud%20Connect%20Pro%20-%20Modern%20data%20center%20servers%20with%20blue%20neon%20lights.png', href: '/products/4', meta: '$199/mo' },
   { title: 'DevOps Master Console', description: 'Comprehensive CI/CD platform for Kubernetes, Docker operations, and automated testing workflows.', badge: 'FEATURED', category: 'Software', image: '/assets/Futuristic%20minimalist%20tablet%20showing%20the%20Travler%20Enterprise%20Suite%20v4.0%20dashboard.png', href: '/products/5', meta: '$599/mo' },
-  { title: 'Purely', description: 'Natural skincare brand Shopify storefront with a clean, minimal aesthetic and seamless shopping experience.', badge: 'SHOPIFY', category: 'Shopify', image: '/assets/shopify/purely/home.png', href: '/portfolio/purely', meta: 'View Project' },
-  { title: 'TechNova', description: 'Bold, tech-forward Shopify store for electronics and gadget retailers with a dark, modern UI.', badge: 'SHOPIFY', category: 'Shopify', image: '/assets/shopify/technova/home.png', href: '/portfolio/technova', meta: 'View Project' },
-  { title: 'Velora', description: 'Premium fashion Shopify store with elegant typography, full cart flow, and a polished checkout experience.', badge: 'SHOPIFY', category: 'Shopify', image: '/assets/shopify/velora/home.png', href: '/portfolio/velora', meta: 'View Project' },
 ];
 
-const tabs = ['All', 'Software', 'Hardware', 'Security', 'Cloud', 'Shopify'];
+const tabs = ['All', 'Software', 'Hardware', 'Security', 'Cloud'];
 
-export default function ProductsPage() {
+function ProductsContent() {
   const [active, setActive] = useState('All');
   const searchParams = useSearchParams();
   const q = searchParams.get("q") || "";
@@ -44,9 +41,7 @@ export default function ProductsPage() {
   });
 
   return (
-    <div className={styles.page}>
-      <SiteHeader />
-
+    <>
       <section className={styles.section} style={{ paddingBottom: '2rem' }}>
         <div className={styles.badge} style={{ marginBottom: '1.25rem' }}>Products & Portfolio</div>
         <h1 className={styles.heading1}>Innovative Solutions for Tomorrow</h1>
@@ -56,7 +51,6 @@ export default function ProductsPage() {
       </section>
 
       <div className={styles.section} style={{ paddingTop: '0', paddingBottom: '1.5rem' }}>
-        {/* Local search */}
         <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
           <div style={{ position: 'relative', flex: '1', maxWidth: '24rem' }}>
             <input
@@ -74,7 +68,6 @@ export default function ProductsPage() {
             <button onClick={() => setSearchQuery('')} style={{ fontSize: '0.8rem', color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer' }}>Clear ✕</button>
           )}
         </div>
-        {/* Tabs */}
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
           {tabs.map(tab => (
             <button key={tab} onClick={() => setActive(tab)} style={{ padding: '0.5rem 1.125rem', background: active === tab ? 'var(--accent)' : 'var(--bg-card)', color: active === tab ? '#fff' : 'var(--text-secondary)', borderRadius: '8px', fontSize: '0.875rem', fontWeight: '600', border: `1px solid ${active === tab ? 'var(--accent)' : 'var(--border)'}`, cursor: 'pointer', transition: 'all 0.15s' }}>
@@ -97,7 +90,7 @@ export default function ProductsPage() {
           {filtered.map(item => (
             <div key={item.title} className={styles.card} style={{ padding: 0, overflow: 'hidden', position: 'relative' }}>
               {item.badge && (
-                <div style={{ position: 'absolute', top: '0.875rem', left: item.badge === 'SHOPIFY' ? '0.875rem' : undefined, right: item.badge !== 'SHOPIFY' ? '0.875rem' : undefined, background: 'var(--accent)', color: '#fff', padding: '0.25rem 0.75rem', borderRadius: '100px', fontSize: '0.65rem', fontWeight: '700', zIndex: 10, letterSpacing: '0.05em' }}>
+                <div style={{ position: 'absolute', top: '0.875rem', right: '0.875rem', background: 'var(--accent)', color: '#fff', padding: '0.25rem 0.75rem', borderRadius: '100px', fontSize: '0.65rem', fontWeight: '700', zIndex: 10, letterSpacing: '0.05em' }}>
                   {item.badge}
                 </div>
               )}
@@ -109,10 +102,10 @@ export default function ProductsPage() {
                 <h3 style={{ fontSize: '1rem', fontWeight: '700', margin: '0.35rem 0 0.5rem', color: 'var(--text-primary)' }}>{item.title}</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: '1.125rem', lineHeight: '1.6' }}>{item.description}</p>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontSize: item.category === 'Shopify' ? '0.875rem' : '1.125rem', fontWeight: '700', color: 'var(--accent)' }}>{item.meta}</span>
+                  <span style={{ fontSize: '1.125rem', fontWeight: '700', color: 'var(--accent)' }}>{item.meta}</span>
                   <Link href={item.href}>
                     <button style={{ padding: '0.4rem 1rem', background: 'transparent', border: '1px solid var(--accent)', color: 'var(--accent)', borderRadius: '8px', fontSize: '0.8rem', fontWeight: '600', cursor: 'pointer', transition: 'all 0.15s' }}>
-                      {item.category === 'Shopify' ? 'View Project' : 'Learn More'} →
+                      Learn More →
                     </button>
                   </Link>
                 </div>
@@ -133,7 +126,17 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
+    </>
+  );
+}
 
+export default function ProductsPage() {
+  return (
+    <div className={styles.page}>
+      <SiteHeader />
+      <Suspense fallback={<div className={styles.section}><p>Loading...</p></div>}>
+        <ProductsContent />
+      </Suspense>
       <SiteFooter />
     </div>
   );
