@@ -8,16 +8,32 @@ import SiteFooter from '../components/SiteFooter';
 
 export default function AboutPage() {
   const milestones = [
-    { year: '2020', title: 'Foundation', description: 'Launched our first AI-powered analytics platform for enterprise clients.' },
-    { year: '2018', title: 'Series A Funding', description: 'Raised $50M to expand our global footprint and product offerings.' },
-    { year: '2016', title: 'Global Expansion', description: 'Opened offices in Europe, Tokyo, and Singapore to serve international markets.' },
-    { year: '2013', title: 'Sustainability Award', description: 'Recognized for our efforts in climate tech and sustainable cloud infrastructure.' },
+    { 
+      year: '2024', 
+      title: 'Company Founded', 
+      description: 'Travler was launched to create innovative software solutions and scalable SaaS products.' 
+    },
+    { 
+      year: '2024', 
+      title: 'Core Platform Development', 
+      description: 'Built a strong engineering foundation with modern web technologies and enterprise-grade architecture.' 
+    },
+    { 
+      year: '2025', 
+      title: 'Market Entry', 
+      description: 'Delivered client-focused web and eCommerce solutions, establishing a growing portfolio and technical credibility.' 
+    },
+    { 
+      year: '2026', 
+      title: 'Product Expansion', 
+      description: 'Transitioning into SaaS product development with a focus on automation, compliance, and scalable business systems.' 
+    },
   ];
 
   const team = [
-    { name: 'Jonathan Vance', role: 'Chief Executive Officer', bio: 'Leading the AI revolution with 20 years of experience in enterprise technology and digital transformation.', image: '/assets/Modern%20glass%20corporate%20office%20interior%20with%20sunset%20lighting%20representing%20business%20growth.png' },
-    { name: 'Dr. Renu Rodriguez', role: 'Chief Technology Officer', bio: 'PhD in Computer Science from MIT. Previously led engineering teams at major tech companies.', image: '/assets/Modern%20glass%20corporate%20office%20interior%20with%20sunset%20lighting%20representing%20business%20growth.png' },
-    { name: 'Marcus Chen', role: 'Chief Operating Officer', bio: 'Operational excellence expert with background in scaling startups to Fortune 500 companies.', image: '/assets/Modern%20glass%20corporate%20office%20interior%20with%20sunset%20lighting%20representing%20business%20growth.png' },
+    { name: 'Kavinda Gimhan', role: 'Chief Technology Officer', bio: 'BSc in Software Engineering from London Metropolitan University. Experienced in building scalable web applications using Angular and Spring Boot, with a strong focus on enterprise solutions and system architecture.', image: '/assets/kavinda.jpeg' },
+    { name: 'Julana Premasekara', role: 'Chief Executive Officer', bio: 'Emerging technology enthusiast and IT student, driven to create meaningful solutions. Actively involved in developing modern applications and exploring new innovations in the tech space.', image: '/assets/jula.jfif' },
+    { name: 'Ruchira Thathsara', role: 'Chief Operating Officer', bio: 'Student at University of Moratuwa with a strong interest in operations, management, and building efficient systems for real-world applications.', image: '/assets/ruchi.jfif' },
   ];
 
   return (
