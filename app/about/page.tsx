@@ -32,8 +32,8 @@ export default function AboutPage() {
 
   const team = [
     { name: 'Kavinda Gimhan', role: 'Chief Technology Officer', bio: 'BSc in Software Engineering from London Metropolitan University. Experienced in building scalable web applications using Angular and Spring Boot, with a strong focus on enterprise solutions and system architecture.', image: '/assets/kavinda.jpeg' },
-    { name: 'Julana Premasekara', role: 'Chief Executive Officer', bio: 'Emerging technology enthusiast and IT student, driven to create meaningful solutions. Actively involved in developing modern applications and exploring new innovations in the tech space.', image: '/assets/jula.jfif' },
-    { name: 'Ruchira Thathsara', role: 'Chief Operating Officer', bio: 'Student at University of Moratuwa with a strong interest in operations, management, and building efficient systems for real-world applications.', image: '/assets/ruchi.jfif' },
+    { name: 'Julana Premasekara', role: 'Chief Executive Officer', bio: 'Emerging technology enthusiast and IT student, driven to create meaningful solutions. Actively involved in developing modern applications and exploring new innovations in the tech space.', image: '/assets/jula.jpg' },
+    { name: 'Ruchira Thathsara', role: 'Chief Operating Officer', bio: 'Student at University of Moratuwa with a strong interest in operations, management, and building efficient systems for real-world applications.', image: '/assets/ruchi.jpg' },
   ];
 
   return (
