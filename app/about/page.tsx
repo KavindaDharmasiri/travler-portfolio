@@ -47,7 +47,7 @@ export default function AboutPage() {
           <div style={{ textAlign: 'center', maxWidth: '48rem', padding: '0 1.5rem' }}>
             <div className={styles.badge} style={{ marginBottom: '1.25rem' }}>Our Story</div>
             <h1 style={{ fontSize: 'clamp(1.875rem, 5vw, 3rem)', fontWeight: '800', color: '#fff', marginBottom: '1rem', lineHeight: '1.2' }}>
-              Innovating the Future Since 2010
+              Innovating the Future Since 2025
             </h1>
             <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.8)', lineHeight: '1.7' }}>
               A technology-driven business transformation leader helping organizations succeed by accelerating digital innovation.
