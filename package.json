@@ -9,11 +9,16 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/nodemailer": "^7.0.11",
+    "mysql2": "^3.23.3",
     "next": "16.1.6",
     "nodemailer": "^8.0.4",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "server-only": "^0.0.1",
+    "sweetalert2": "^11.26.25",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@types/node": "^20",
