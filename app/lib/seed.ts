@@ -26,24 +26,26 @@ async function count(table: string): Promise<number> {
 }
 
 async function seedUsers(): Promise<void> {
-  const email = "info@travler.lk";
-  const hash = hashPassword("Admin@123");
+  const email = (process.env.ADMIN_EMAIL || "info@travler.lk").trim().toLowerCase();
+  const password = process.env.ADMIN_PASSWORD || "ChangeMe123!";
+
   const existing = await query<UserRow[]>(
     "SELECT id FROM users WHERE email = ? LIMIT 1",
     [email]
   );
 
   if (existing.length > 0) {
+    // Never overwrite an existing admin password on boot.
     await query(
-      "UPDATE users SET password = ?, is_active = 1, user_type = 'admin' WHERE email = ?",
-      [hash, email]
+      "UPDATE users SET is_active = 1, user_type = 'admin' WHERE email = ?",
+      [email]
     );
     return;
   }
 
   await query(
     "INSERT INTO users (email, password, is_active, user_type) VALUES (?, ?, 1, 'admin')",
-    [email, hash]
+    [email, hashPassword(password)]
   );
 }
 
@@ -99,11 +101,16 @@ export async function ensureSeeded(): Promise<void> {
   if (seeding) return seeding;
 
   seeding = (async () => {
-    await initDb();
-    await seedUsers();
-    await seedProjects();
-    await seedSettings();
-    seeded = true;
+    try {
+      await initDb();
+      await seedUsers();
+      await seedProjects();
+      await seedSettings();
+      seeded = true;
+    } catch (err) {
+      seeding = null;
+      throw err;
+    }
   })();
 
   return seeding;

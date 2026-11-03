@@ -22,7 +22,7 @@ export default async function AdminLayout({
   return (
     <>
       <AdminSidebar />
-      <main className="ml-64 flex-1 flex flex-col min-h-screen relative">
+      <main className="md:ml-64 flex-1 flex flex-col min-h-screen relative">
         {/* Schematic background lines (Desktop only) */}
         <div className="hidden md:flex absolute inset-0 pointer-events-none z-0 justify-evenly">
           <div className="w-[1px] h-full bg-grid-line/50"></div>

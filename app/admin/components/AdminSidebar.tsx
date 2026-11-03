@@ -10,13 +10,14 @@ const links = [
   { href: "/admin/inquiries/contact", label: "Contact", icon: "mail" },
   { href: "/admin/inquiries/consultation", label: "Consultation", icon: "video_call" },
   { href: "/admin/settings", label: "Settings", icon: "settings" },
+  { href: "/admin/account", label: "Account", icon: "person" },
 ];
 
 export default function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="h-screen w-64 fixed left-0 top-0 flex flex-col border-r border-grid-line bg-surface-container-low z-50">
+    <aside className="w-full md:w-64 md:fixed md:left-0 md:top-0 md:h-screen flex flex-col border-b md:border-b-0 md:border-r border-white/60 bg-white/70 backdrop-blur-xl z-50">
       {/* Header */}
       <div className="px-gutter py-stack-lg border-b border-grid-line flex flex-col items-start gap-stack-sm">
         <div className="flex items-center gap-stack-sm w-full">
@@ -44,7 +45,9 @@ export default function AdminSidebar() {
       {/* Navigation Links */}
       <nav className="flex-1 overflow-y-auto py-stack-md">
         {links.map((l) => {
-          const active = pathname === l.href;
+          const active =
+  pathname === l.href ||
+  (l.href !== "/admin/dashboard" && pathname.startsWith(l.href));
           return (
             <Link
               key={l.href}

@@ -3,11 +3,15 @@
 import { useState } from "react";
 import Link from "next/link";
 import SmartImage from "../../components/SmartImage";
-import { categories } from "../../lib/products";
 import type { Project } from "../../lib/projects";
 
 export default function RegistryGrid({ projects }: { projects: Project[] }) {
   const [active, setActive] = useState("All Systems");
+
+  const categories = [
+    "All Systems",
+    ...Array.from(new Set(projects.map((p) => p.category))).sort(),
+  ];
 
   const filtered =
     active === "All Systems"
@@ -81,9 +85,25 @@ export default function RegistryGrid({ projects }: { projects: Project[] }) {
                 [SYS.{String(i + 1).padStart(2, "0")}]
               </span>
               <div className="flex items-center gap-2 bg-surface-background border border-grid-line px-2 py-1">
-                <span className="w-2 h-2 rounded-full bg-secondary pulse-soft"></span>
-                <span className="font-code-label-sm text-code-label-sm text-secondary">
-                  LIVE
+                <span
+                  className={`w-2 h-2 rounded-full pulse-soft ${
+                    p.status === "LIVE"
+                      ? "bg-secondary"
+                      : p.status === "DEV"
+                      ? "bg-amber-500"
+                      : "bg-slate-data"
+                  }`}
+                ></span>
+                <span
+                  className={`font-code-label-sm text-code-label-sm ${
+                    p.status === "LIVE"
+                      ? "text-secondary"
+                      : p.status === "DEV"
+                      ? "text-amber-600"
+                      : "text-slate-data"
+                  }`}
+                >
+                  {p.status}
                 </span>
               </div>
             </div>

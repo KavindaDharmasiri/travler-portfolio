@@ -2,8 +2,12 @@ import Link from "next/link";
 import TypingLabel from "../components/TypingLabel";
 import SmartImage from "../components/SmartImage";
 import Reveal from "../components/Reveal";
+import { getSettings } from "../lib/seed";
 
-export default function Home() {
+export default async function Home() {
+  const settings = await getSettings();
+  const heroHeadline =
+    settings.hero_headline || "Engineered Digital Architecture.";
   return (
     <main className="flex-1">
       {/* Hero Section */}
@@ -18,7 +22,7 @@ export default function Home() {
             </Reveal>
             <Reveal delay={100}>
               <h1 className="font-display-lg text-display-lg text-on-surface mb-stack-md">
-                Engineered Digital Architecture.
+                {heroHeadline}
               </h1>
             </Reveal>
             <Reveal delay={200}>

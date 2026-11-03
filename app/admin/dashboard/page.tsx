@@ -30,7 +30,7 @@ const statusClass: Record<string, string> = {
 };
 
 const metricCardClass =
-  "lift-hover bg-surface-container-lowest border border-grid-line rounded-DEFAULT p-stack-md flex flex-col justify-between hover:border-primary-container hover:bg-primary-container/5 group relative";
+  "lift-hover bg-white/70 backdrop-blur-xl border border-white/60 rounded-DEFAULT p-stack-md flex flex-col justify-between hover:border-primary-container hover:bg-primary-container/5 group relative";
 
 export default async function AdminDashboardPage() {
   let projectCount = 0;

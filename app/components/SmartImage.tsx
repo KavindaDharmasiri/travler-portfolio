@@ -14,6 +14,7 @@ export default function SmartImage({
   wrapperClassName = "",
   imageClassName = "",
   skeletonClassName = "",
+  alt,
   onLoad,
   onError,
   ...props
@@ -30,6 +31,7 @@ export default function SmartImage({
       />
       <Image
         {...props}
+        alt={alt}
         className={`${imageClassName} ${props.fill ? "h-full w-full" : ""}`}
         onLoad={(e) => {
           setLoaded(true);

@@ -18,13 +18,32 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ["400", "500", "600", "700"],
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Travler | Backend Systems & Full-Stack Platforms",
     template: "%s | Travler",
   },
   description:
     "Travler builds backend systems and full-stack platforms — from fraud detection engines to e-commerce storefronts.",
+  openGraph: {
+    title: "Travler | Backend Systems & Full-Stack Platforms",
+    description:
+      "Travler builds backend systems and full-stack platforms — from fraud detection engines to e-commerce storefronts.",
+    url: siteUrl,
+    siteName: "Travler",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Travler | Backend Systems & Full-Stack Platforms",
+    description:
+      "Travler builds backend systems and full-stack platforms — from fraud detection engines to e-commerce storefronts.",
+  },
 };
 
 export default function RootLayout({

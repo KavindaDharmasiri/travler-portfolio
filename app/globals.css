@@ -678,10 +678,13 @@
 
 /* --- Cards --- */
 .card {
-  background: var(--surface-container-lowest);
-  border: 1px solid var(--border-neutral);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   border-radius: var(--radius-lg);
   position: relative;
+  box-shadow: 0 8px 32px rgba(15, 118, 110, 0.06);
 }
 
 .card-padded {
@@ -1089,9 +1092,12 @@
 
 /* --- Panels / toolbar --- */
 .panel {
-  background: var(--surface-container-lowest);
-  border: 1px solid var(--border-neutral);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px rgba(15, 118, 110, 0.06);
 }
 
 .panel-head {

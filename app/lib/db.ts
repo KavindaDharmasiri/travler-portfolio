@@ -7,7 +7,7 @@ const serverConfig = {
   port: Number(process.env.DB_PORT || 25939),
   user: process.env.DB_USER || "avnadmin",
   password: process.env.DB_PASSWORD || "",
-  ssl: process.env.DB_SSL === "true" ? { rejectUnauthorized: false } : undefined,
+  ssl: process.env.DB_SSL === "false" ? undefined : { rejectUnauthorized: false },
 };
 
 const config = {
@@ -93,6 +93,11 @@ const SCHEMA = [
   `CREATE TABLE IF NOT EXISTS settings (
     \`key\` VARCHAR(255) PRIMARY KEY,
     value TEXT
+  )`,
+  `CREATE TABLE IF NOT EXISTS newsletter_subscribers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   )`,
 ];
 

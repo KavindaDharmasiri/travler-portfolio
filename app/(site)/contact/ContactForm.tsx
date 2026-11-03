@@ -1,11 +1,19 @@
 "use client";
 
 import { useActionState } from "react";
+import { useSearchParams } from "next/navigation";
 import { createInquiryAction } from "../../actions/inquiries";
 
 const initial = { ok: false, error: "" };
 
 export default function ContactForm() {
+  const searchParams = useSearchParams();
+  const product = searchParams.get("product") ?? "";
+  const initialMessage = product
+    ? `I'm interested in a project similar to ${product}.`
+    : "";
+  const initialInterest = product ? "Product development" : undefined;
+
   const [state, formAction, pending] = useActionState(
     createInquiryAction,
     initial
@@ -28,6 +36,14 @@ export default function ContactForm() {
   return (
     <form action={formAction} className="panel" style={{ padding: "1.5rem" }}>
       <input type="hidden" name="inquiry_type" value="contact" />
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        className="hidden"
+        aria-hidden="true"
+      />
       <span className="code-label-sm text-muted">[FORM / CONTACT]</span>
       {state.error && (
         <div className="mt-4 border border-error bg-error/5 px-3 py-2 body-sm text-error">
@@ -77,7 +93,12 @@ export default function ContactForm() {
           <label className="field-label" htmlFor="interest">
             Interested in
           </label>
-          <select id="interest" name="interest" className="select">
+          <select
+            id="interest"
+            name="interest"
+            className="select"
+            defaultValue={initialInterest ?? "Product development"}
+          >
             <option>Product development</option>
             <option>Backend / API</option>
             <option>Full-stack platform</option>
@@ -94,6 +115,7 @@ export default function ContactForm() {
             name="message"
             className="textarea"
             placeholder="Describe your project..."
+            defaultValue={initialMessage}
           />
         </div>
         <button type="submit" disabled={pending} className="btn btn-primary">

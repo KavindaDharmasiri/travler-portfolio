@@ -1,10 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import NewsletterForm from "./NewsletterForm";
 
 export default function SiteFooter() {
   return (
-    <footer className="w-full py-stack-lg px-margin-desktop bg-surface-background border-t border-grid-line mt-auto z-10 relative">
-      <div className="flex flex-col md:flex-row justify-between items-center max-w-full w-full">
+    <footer className="w-full py-stack-lg px-margin-desktop bg-white/70 backdrop-blur-xl border-t border-white/60 mt-auto z-10 relative">
+      <div className="flex flex-col md:flex-row justify-between items-center max-w-full w-full gap-stack-md">
+        <div className="flex flex-col items-center md:items-start gap-stack-sm">
+          <NewsletterForm />
+        </div>
         <Link href="/" className="flex items-center mb-4 md:mb-0">
           <Image
             src="/assets/traveler_logo.png"

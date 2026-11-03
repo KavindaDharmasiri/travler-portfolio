@@ -40,6 +40,14 @@ export default function ConsultationForm() {
   return (
     <form action={formAction} className="space-y-stack-md flex flex-col">
       <input type="hidden" name="inquiry_type" value="consultation" />
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        className="hidden"
+        aria-hidden="true"
+      />
       {state.error && (
         <div className="flex items-start gap-2 border border-error bg-error/5 px-3 py-2 font-code-label-sm text-code-label-sm text-error">
           <span className="material-symbols-outlined text-[16px]">

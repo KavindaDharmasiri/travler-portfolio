@@ -64,7 +64,7 @@ export function fromRow(row: ProjectRow): Project {
     problem: row.problem,
     features: splitList(row.features),
     image: row.image,
-    imageAlt: row.image_alt,
+    imageAlt: row.image_alt ?? "",
     featured: row.featured === 1,
   };
 }

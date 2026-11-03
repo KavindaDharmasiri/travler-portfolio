@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Reveal from "../../components/Reveal";
 import SmartImage from "../../components/SmartImage";
 import ConsultationForm from "./ConsultationForm";
+import { getSettings } from "../../lib/seed";
 
 export const metadata: Metadata = {
   title: "Initialize Consultation",
@@ -9,31 +10,14 @@ export const metadata: Metadata = {
     "Establish an encrypted communication link to outline project vectors. Evaluate technical specifications and coordinate deployment strategies.",
 };
 
-const nodeDetails = [
-  {
-    icon: "mail",
-    label: "Electronic Mail",
-    value: "info@travler.lk",
-  },
-  {
-    icon: "call",
-    label: "Voice Protocol",
-    value: "076 883 1973",
-  },
-  {
-    icon: "location_on",
-    label: "Physical Coordinates",
-    value: (
-      <>
-        Colombo District
-        <br />
-        Sri Lanka
-      </>
-    ),
-  },
-];
+// nodeDetails built inside component from settings
 
-export default function ConsultationPage() {
+export default async function ConsultationPage() {
+  const settings = await getSettings();
+  const email = settings.contact_email || "info@travler.lk";
+  const phone = settings.phone || "076 883 1973";
+  const location = settings.location || "Colombo District, Sri Lanka";
+
   return (
     <main className="flex-grow flex flex-col px-margin-mobile md:px-margin-desktop py-margin-desktop gap-margin-desktop relative z-10 max-w-7xl mx-auto w-full">
       {/* Hero Section */}
@@ -80,7 +64,19 @@ export default function ConsultationPage() {
                 Node Details
               </h3>
               <ul className="space-y-stack-sm font-code-label-sm text-code-label-sm text-on-surface">
-                {nodeDetails.map((d) => (
+                {[
+                  { icon: "mail", label: "Electronic Mail", value: email },
+                  { icon: "call", label: "Voice Protocol", value: phone },
+                  {
+                    icon: "location_on",
+                    label: "Physical Coordinates",
+                    value: (
+                      <>
+                        {location}
+                      </>
+                    ),
+                  },
+                ].map((d) => (
                   <li key={d.icon} className="flex items-start gap-stack-sm">
                     <span className="material-symbols-outlined text-slate-data text-[16px]">
                       {d.icon}

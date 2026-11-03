@@ -9,6 +9,7 @@ const links = [
   { href: "/products", label: "Portfolio" },
   { href: "/services", label: "Services" },
   { href: "/about", label: "Expertise" },
+  { href: "/insights", label: "Insights" },
 ];
 
 export default function TopNavBar() {
@@ -34,8 +35,10 @@ export default function TopNavBar() {
 
   return (
     <header
-      className={`w-full top-0 sticky z-50 bg-surface-background/90 backdrop-blur-md border-b border-grid-line px-margin-mobile md:px-margin-desktop py-stack-md flex justify-between items-center transition-shadow duration-300 ${
-        scrolled ? "shadow-[0_8px_30px_-12px_rgba(15,118,110,0.25)]" : ""
+      className={`w-full top-0 sticky z-50 bg-white/70 backdrop-blur-xl border-b border-white/60 px-margin-mobile md:px-margin-desktop py-stack-md flex justify-between items-center transition-shadow duration-300 ${
+        scrolled
+          ? "shadow-[0_8px_30px_-12px_rgba(15,118,110,0.25)] bg-white/85"
+          : ""
       }`}
     >
       <Link href="/" className="flex items-center gap-2 group" onClick={() => setOpen(false)}>
@@ -89,7 +92,7 @@ export default function TopNavBar() {
 
       {/* Mobile menu */}
       <div
-        className={`mobile-menu md:hidden absolute top-full left-0 right-0 bg-surface-background/95 backdrop-blur-md border-b border-grid-line px-margin-mobile ${
+        className={`mobile-menu md:hidden absolute top-full left-0 right-0 bg-white/80 backdrop-blur-xl border-b border-white/60 px-margin-mobile ${
           open ? "mobile-menu-open" : ""
         }`}
       >
